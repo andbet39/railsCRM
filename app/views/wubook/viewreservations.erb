@@ -1,0 +1,139 @@
+<div class="main">
+
+  <div style="width:160px; float:left;">
+    <div id="nav"></div>
+  </div>
+
+  <div style="margin-left: 160px;">
+
+    <div class="space">
+       Time range:
+        <select id="timerange">
+          <option value="week">Week</option>
+          <option value="month" selected>Month</option>
+        </select>
+      </div>
+
+    <div id="dp"></div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var nav = new DayPilot.Navigator("nav");
+  nav.selectMode = "month";
+  nav.showMonths = 3;
+  nav.skipMonths = 3;
+  nav.onTimeRangeSelected = function(args) {
+    loadTimeline(args.start);
+    loadEvents();
+  };
+  nav.init();
+
+  $("#timerange").change(function() {
+    switch (this.value) {
+      case "week":
+        dp.days = 7;
+        nav.selectMode = "Week";
+        nav.select(nav.selectionDay);
+        break;
+      case "month":
+        dp.days = dp.startDate.daysInMonth();
+        nav.selectMode = "Month";
+        nav.select(nav.selectionDay);
+        break;
+    }
+  });
+
+</script>
+
+
+
+<script type="text/javascript">
+
+  var dp = new DayPilot.Scheduler("dp");
+  dp.scale = "Day";
+  dp.timeHeaders = [
+    { groupBy: "Month", format: "MMMM yyyy" },
+    { groupBy: "Day", format: "d" }
+  ];
+  dp.days = 30;
+  dp.cellWidth = 80;
+  dp.eventHeight = 50;
+  dp.bubble = new DayPilot.Bubble({});
+
+
+  dp.rowHeaderColumns = [
+    {title: "Room", width: 80}
+  ];
+
+  dp.onBeforeCellRender = function(args) {
+    var dayOfWeek = args.cell.start.getDayOfWeek();
+    if (dayOfWeek === 6 || dayOfWeek === 0) {
+      args.cell.backColor = "#f8f8f8";
+    }
+  };
+
+  dp.init();
+
+  loadResources();
+  loadEvents();
+
+  function loadResources() {
+    $.get("/api/rooms.json",
+        function(data) {
+          dp.resources = data;
+          dp.update();
+        });
+  }
+
+  function loadEvents() {
+    var start = dp.visibleStart();
+    var end = dp.visibleEnd();
+
+    $.get("/api/reservations.json?date_from="+start+"&date_to="+end,
+        function(data) {
+          dp.events.list = data;
+          dp.update();
+        }
+    );
+  }
+
+  function loadTimeline(date) {
+    dp.scale = "Manual";
+    dp.timeline = [];
+    var start = date.getDatePart();
+
+    for (var i = 0; i < dp.days; i++) {
+      dp.timeline.push({start: start.addDays(i), end: start.addDays(i+1)});
+    }
+    dp.update();
+  }
+
+  dp.onBeforeEventRender = function(args) {
+    var start = new DayPilot.Date(args.e.start);
+    var end = new DayPilot.Date(args.e.end);
+
+    var today = new DayPilot.Date().getDatePart();
+    var now = new DayPilot.Date();
+
+    args.e.html = args.e.customer_name +" "+args.e.customer_surname;
+
+    switch (args.e.id_channel) {
+      case 0:
+          args.e.barColor ='#B6D7A8';
+        break;
+      case 1:
+          args.e.barColor ='#FF9900';
+        break;
+      case 2:
+        args.e.barColor = '#4A86E8';
+            break;
+      case 43:
+        args.e.barColor = '#FF00FF';
+            break;
+    }
+  }
+
+ </script>

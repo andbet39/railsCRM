@@ -1,0 +1,65 @@
+<%= form_for(@wb_csv_line) do |f| %>
+  <% if @wb_csv_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wb_csv_line.errors.count, "error") %> prohibited this wb_csv_line from being saved:</h2>
+
+      <ul>
+      <% @wb_csv_line.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :ocode %><br>
+    <%= f.text_field :ocode %>
+  </div>
+  <div class="field">
+    <%= f.label :arrival %><br>
+    <%= f.date_select :arrival %>
+  </div>
+  <div class="field">
+    <%= f.label :departure %><br>
+    <%= f.date_select :departure %>
+  </div>
+  <div class="field">
+    <%= f.label :received %><br>
+    <%= f.date_select :received %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :roomn %><br>
+    <%= f.number_field :roomn %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :origin %><br>
+    <%= f.text_field :origin %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

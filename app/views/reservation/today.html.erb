@@ -1,0 +1,106 @@
+<h1>Reservation#view</h1>
+<p>Find me in app/views/reservation/view.html.erb</p>
+<div class="row well ">
+  <div class="col-md-6">
+    <%= form_tag("/reservation/today", method: "get") do %>
+        <%= label_tag(:date_from, "Date:") %>
+        <%= date_field_tag(:date ,@date) %>
+
+        <%= submit_tag("Get",class:"btn btn-success") %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Presence</h2>
+    <table id="restable" class="table table-bordered">
+      <thead>
+      <tr>
+
+        <td>Res ID</td>
+        <td>Name</td>
+        <td>Check_in</td>
+        <td>Check_out</td>
+        <td>Amount</td>
+        <td>Room</td>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @presence.each() do |r| %>
+          <tr>
+            <td><%= r.reservation_code %></td>
+            <td><%= r.customer_name %> <%= r.customer_surname %></td>
+            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
+            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
+            <td><%= r.amount %></td>
+            <td><%= r.roomnames %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-12">
+    <h2>Check-in</h2>
+    <table id="restable" class="table table-bordered">
+      <thead>
+      <tr>
+
+        <td>Res ID</td>
+        <td>Name</td>
+        <td>Check_in</td>
+        <td>Check_out</td>
+        <td>Amount</td>
+        <td>Room</td>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @ci.each() do |r| %>
+          <tr>
+            <td><%= r.reservation_code %></td>
+            <td><%= r.customer_name %> <%= r.customer_surname %></td>
+            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
+            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
+            <td><%= r.amount %></td>
+            <td><%= r.roomnames %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-12">
+    <h2>Check-out</h2>
+
+    <table id="restable" class="table table-bordered">
+      <thead>
+      <tr>
+
+        <td>Res ID</td>
+        <td>Name</td>
+        <td>Check_in</td>
+        <td>Check_out</td>
+        <td>Amount</td>
+        <td>Room</td>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @co.each() do |r| %>
+          <tr>
+            <td><%= r.reservation_code %></td>
+            <td><%= r.customer_name %> <%= r.customer_surname %></td>
+            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
+            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
+            <td><%= r.amount %></td>
+            <td><%= r.roomnames %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

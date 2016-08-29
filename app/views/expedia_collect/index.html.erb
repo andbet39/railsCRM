@@ -1,0 +1,13 @@
+<h1>ExpediaCollect#index</h1>
+<p>Find me in app/views/expedia_collect/index.html.erb</p>
+
+<%= form_tag("/expedia_collect/view", method: "get") do %>
+    <%= label_tag(:date_from, "From:") %>
+    <%= date_field_tag(:date_from) %>
+    <%= label_tag(:date_to, "To:") %>
+    <%= date_field_tag(:date_to) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+
+

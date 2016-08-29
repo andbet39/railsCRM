@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  ocode: MyString
+  arrival: 2016-08-27
+  departure: 2016-08-27
+  received: 2016-08-27
+  name: MyString
+  phone: MyString
+  email: MyString
+  price: 1.5
+  roomn: 1
+  status: MyString
+  origin: MyString
+
+two:
+  code: MyString
+  ocode: MyString
+  arrival: 2016-08-27
+  departure: 2016-08-27
+  received: 2016-08-27
+  name: MyString
+  phone: MyString
+  email: MyString
+  price: 1.5
+  roomn: 1
+  status: MyString
+  origin: MyString

@@ -1,0 +1,67 @@
+<h1>Reservation#view</h1>
+<p>Find me in app/views/reservation/view.html.erb</p>
+
+<div class="row">
+  <div class="col-md-12 well">
+    <%= form_tag("/reservation/view", method: "get") do %>
+        <%= label_tag(:date_from, "From:") %>
+        <%= date_field_tag(:date_from,@date_from) %>
+        <%= label_tag(:date_to, "To:") %>
+        <%= date_field_tag(:date_to, @date_to) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+
+<p><strong>Confirmed : </strong><%= @n_res_confirmed %>  -  <%= number_to_currency(@total_confirmed) %>
+  <strong>Last Year: </strong> <%= number_to_currency(@total_ly) %> </p>
+<p><strong>Cancelled :  </strong> <%= @n_res_cancelled %>  -  <%= number_to_currency(@total_cancelled) %></p>
+<p><strong>Total : </strong> <%= @n_res %>  -  <%= number_to_currency(@total) %></p>
+<p><strong>Average Before : </strong> <%= @avg_before%> <strong>Last Year :</strong> <%= @avg_before_ly %>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <table id="restable" class="table table-bordered">
+      <thead>
+      <tr>
+
+        <td>Res ID</td>
+        <td>Name</td>
+        <td>Check_in</td>
+        <td>Check_out</td>
+        <td>Received</td>
+        <td>Amount</td>
+        <td>Status</td>
+        <td>Room</td>
+        <td>Day</td>
+        <td>Mail</td>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @reservations.each() do |r| %>
+          <tr>
+            <td><%= r.reservation_code %></td>
+            <td><%= r.customer_name %> <%= r.customer_surname %></td>
+            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
+            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
+            <td><%= r.date_received.strftime("%d/%m/%Y") %></td>
+            <td><%= r.amount %></td>
+            <td><%= r.status %></td>
+            <td><%= r.roomnames %></td>
+            <td><%= r.daybefore %></td>
+            <td><%= link_to "Mail", reservation_checkinmail_path(:res_code => r.reservation_code) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $('#restable').DataTable({
+  });
+</script>

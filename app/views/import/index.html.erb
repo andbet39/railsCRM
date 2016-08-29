@@ -1,0 +1,7 @@
+<h1>Import#index</h1>
+<p>Find me in app/views/import/index.html.erb</p>
+
+<form <%= form_tag("/import/csv", method: "post", multipart: true) do %>
+  <%= file_field_tag(:file) %>
+  <%= submit_tag("Import") %>
+<% end %>

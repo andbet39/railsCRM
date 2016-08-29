@@ -1,0 +1,15 @@
+<h1>Wubook#index</h1>
+<p>Find me in app/views/wubook/index.html.erb</p>
+<% if flash[:fetched] %>
+    <div class="notice"><%= flash[:created] %></div>
+    <div class="notice"><%= flash[:fetched] %></div>
+<% end %>
+
+<%= link_to 'Fetch New' , wubook_fetch_new_reservation_path %>
+<%= form_tag("/wubook/fetch_reservation", method: "get") do %>
+    <%= label_tag(:date_from, "From:") %>
+    <%= date_field_tag(:date_from) %>
+    <%= label_tag(:date_to, "To:") %>
+    <%= date_field_tag(:date_to) %>
+    <%= submit_tag("Search") %>
+<% end %>

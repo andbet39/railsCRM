@@ -1,0 +1,30 @@
+<h1>Customer#index</h1>
+<p>Find me in app/views/customer/index.html.erb</p>
+
+
+<table class="table cus_table">
+  <thead>
+  <tr>
+    <td>Name</td>
+    <td>Surname</td>
+    <td>mail</td>
+    <td>Phone</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @customers.each() do |cus| %>
+      <tr>
+        <td><%= cus.name %> </td>
+        <td><%= cus.surname %></td>
+        <td><%= cus.mail %></td>
+        <td><%= cus.phone %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<script type="text/javascript" charset="utf-8">
+  $('.cus_table').DataTable({
+  });
+</script>
