@@ -37,6 +37,7 @@
         <td>Room</td>
         <td>Day</td>
         <td>Mail</td>
+        <td>Chan</td>
 
       </tr>
       </thead>
@@ -53,6 +54,8 @@
             <td><%= r.roomnames %></td>
             <td><%= r.daybefore %></td>
             <td><%= link_to "Mail", reservation_checkinmail_path(:res_code => r.reservation_code) %></td>
+            <td><%= r.channel.name %></td>
+            <td><%= link_to "Book Pickup", pickup_booking_index_path(:res_code => r.reservation_code) %></td>
           </tr>
       <% end %>
       </tbody>

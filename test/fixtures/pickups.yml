@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  customer_surname: MyString
+  airport: MyString
+  terminal: MyString
+  arrival_time: 2016-08-29 11:57:35
+  arrival_date: 2016-08-29
+  flight_number: MyString
+
+two:
+  customer_name: MyString
+  customer_surname: MyString
+  airport: MyString
+  terminal: MyString
+  arrival_time: 2016-08-29 11:57:35
+  arrival_date: 2016-08-29
+  flight_number: MyString

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer name:</strong>
+  <%= @pickup.customer_name %>
+</p>
+
+<p>
+  <strong>Customer surname:</strong>
+  <%= @pickup.customer_surname %>
+</p>
+
+<p>
+  <strong>Airport:</strong>
+  <%= @pickup.airport %>
+</p>
+
+<p>
+  <strong>Terminal:</strong>
+  <%= @pickup.terminal %>
+</p>
+
+<p>
+  <strong>Arrival time:</strong>
+  <%= @pickup.arrival_time %>
+</p>
+
+<p>
+  <strong>Arrival date:</strong>
+  <%= @pickup.arrival_date %>
+</p>
+
+<p>
+  <strong>Flight number:</strong>
+  <%= @pickup.flight_number %>
+</p>
+
+<%= link_to 'Edit', edit_pickup_path(@pickup) %> |
+<%= link_to 'Back', pickups_path %>

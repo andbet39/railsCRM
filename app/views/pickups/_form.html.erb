@@ -1,0 +1,45 @@
+<%= form_for(@pickup) do |f| %>
+  <% if @pickup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>
+
+      <ul>
+      <% @pickup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_name %><br>
+    <%= f.text_field :customer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_surname %><br>
+    <%= f.text_field :customer_surname %>
+  </div>
+  <div class="field">
+    <%= f.label :airport %><br>
+    <%= f.text_field :airport %>
+  </div>
+  <div class="field">
+    <%= f.label :terminal %><br>
+    <%= f.text_field :terminal %>
+  </div>
+  <div class="field">
+    <%= f.label :arrival_time %><br>
+    <%= f.time_select :arrival_time %>
+  </div>
+  <div class="field">
+    <%= f.label :arrival_date %><br>
+    <%= f.date_select :arrival_date %>
+  </div>
+  <div class="field">
+    <%= f.label :flight_number %><br>
+    <%= f.text_field :flight_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

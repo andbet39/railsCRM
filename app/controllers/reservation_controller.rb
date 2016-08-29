@@ -3,8 +3,6 @@ class ReservationController < ApplicationController
 
   end
 
-
-
   def today
 
     today = Date.parse(params[:date])
@@ -27,8 +25,10 @@ class ReservationController < ApplicationController
     res_code = params[:res_code]
     res = Wubookreservation.find_by(:reservation_code => res_code)
     ReservationMailer.checkin_mail(res).deliver_now
-
+    res.checkin_mail_sent = true
+    res.save!
     redirect_to :back
+
   end
 
 

@@ -17,87 +17,33 @@
   <div class="col-md-12">
     <h2>Presence</h2>
     <table id="restable" class="table table-bordered">
-      <thead>
-      <tr>
-
-        <td>Res ID</td>
-        <td>Name</td>
-        <td>Check_in</td>
-        <td>Check_out</td>
-        <td>Amount</td>
-        <td>Room</td>
-
-      </tr>
-      </thead>
+      <%= render 'res_table_head' %>
       <tbody>
       <% @presence.each() do |r| %>
-          <tr>
-            <td><%= r.reservation_code %></td>
-            <td><%= r.customer_name %> <%= r.customer_surname %></td>
-            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
-            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
-            <td><%= r.amount %></td>
-            <td><%= r.roomnames %></td>
-          </tr>
+          <%= render 'resrow', r:r %>
       <% end %>
       </tbody>
     </table>
   </div>
+
   <div class="col-md-12">
     <h2>Check-in</h2>
     <table id="restable" class="table table-bordered">
-      <thead>
-      <tr>
-
-        <td>Res ID</td>
-        <td>Name</td>
-        <td>Check_in</td>
-        <td>Check_out</td>
-        <td>Amount</td>
-        <td>Room</td>
-
-      </tr>
-      </thead>
+      <%= render 'res_table_head' %>
       <tbody>
       <% @ci.each() do |r| %>
-          <tr>
-            <td><%= r.reservation_code %></td>
-            <td><%= r.customer_name %> <%= r.customer_surname %></td>
-            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
-            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
-            <td><%= r.amount %></td>
-            <td><%= r.roomnames %></td>
-          </tr>
+          <%= render 'resrow', r:r %>
       <% end %>
       </tbody>
     </table>
   </div>
   <div class="col-md-12">
     <h2>Check-out</h2>
-
     <table id="restable" class="table table-bordered">
-      <thead>
-      <tr>
-
-        <td>Res ID</td>
-        <td>Name</td>
-        <td>Check_in</td>
-        <td>Check_out</td>
-        <td>Amount</td>
-        <td>Room</td>
-
-      </tr>
-      </thead>
+      <%= render 'res_table_head' %>
       <tbody>
       <% @co.each() do |r| %>
-          <tr>
-            <td><%= r.reservation_code %></td>
-            <td><%= r.customer_name %> <%= r.customer_surname %></td>
-            <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
-            <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
-            <td><%= r.amount %></td>
-            <td><%= r.roomnames %></td>
-          </tr>
+          <%= render 'resrow', r:r %>
       <% end %>
       </tbody>
     </table>

@@ -1,0 +1,55 @@
+<style>
+  body{
+    padding-top: 0px;
+  }
+</style>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Book pickup to Bamboo B&B</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 ">
+    <% if @pickup.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>
+
+          <ul>
+            <% @pickup.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+      <%= bootstrap_form_for @pickup, url:"/pickup_booking/check", method: "post" do |f| %>
+          <div class="col-md-6 ">
+            <div class="panel panel-success">
+              <div class="panel-heading">Personal info</div>
+              <div class="panel-body">
+                  <%= f.text_field :customer_name , value: @res.customer_name %>
+                  <%= f.text_field :customer_surname  , value: @res.customer_surname %>
+                  <%= f.telephone_field :customer_phone  , value: @res.customer_phone %>
+                  <%= f.email_field :customer_email , value: @res.customer_mail %>
+                </div>
+              </div>
+          </div>
+        <div class="col-md-6 ">
+          <div class="panel panel-success">
+            <div class="panel-heading">Fligh info</div>
+            <div class="panel-body">
+              <%= f.text_field(:flight_number) %>
+              <%= f.text_field(:terminal) %>
+              <%= f.number_field(:passengers) %>
+              <%= f.select :airport, [["Fiumicino", "Fiumicino"], ["Ciampino", "Ciampino"]], { label: "Choose your arrival airport:" }, { class: "selectpicker" } %>
+              <%= f.date_field(:arrival_date , value: @res.date_arrival) %>
+              <%= f.time_field(:arrival_time) %>
+              <%= f.hidden_field(:res_code, value: @res.reservation_code) %>
+            </div>
+          </div>
+        </div>
+
+
+        <%= f.submit("Book it!", class:"btn btn-success") %>
+    <% end %>
+  </div>
+</div>

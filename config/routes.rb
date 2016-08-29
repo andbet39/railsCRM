@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :channels
+  get 'pickup_booking/index'
+
+  post 'pickup_booking/check'
+
+  get 'pickup_booking/confirm'
+
+  get 'pickup_booking/view'
+
+  resources :pickups
   get 'customer/index'
 
   get 'customer/extract'
@@ -31,7 +41,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'wubook#viewreservation'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

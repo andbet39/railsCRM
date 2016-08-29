@@ -1,0 +1,9 @@
+<tr>
+  <td><%= r.reservation_code %></td>
+  <td><%= r.customer_name %> <%= r.customer_surname %></td>
+  <td><%= r.date_arrival.strftime("%d/%m/%Y") %></td>
+  <td><%= r.date_departure.strftime("%d/%m/%Y") %></td>
+  <td><%= r.amount %></td>
+  <td><%= r.roomnames %></td>
+  <td><%= r.channel.name %></td>
+</tr>

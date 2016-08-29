@@ -130,6 +130,7 @@ class WubookController < ApplicationController
 
   def server
     server = XMLRPC::Client.new2 ("https://wubook.net/xrws/")
+    server.instance_variable_get("@http").verify_mode = OpenSSL::SSL::VERIFY_NONE
     #server.set_debug
     server
   end
