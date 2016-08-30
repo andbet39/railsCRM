@@ -10,17 +10,6 @@
 </div>
 <div class="row">
   <div class="col-md-12 ">
-    <% if @pickup.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@pickup.errors.count, "error") %> prohibited this pickup from being saved:</h2>
-
-          <ul>
-            <% @pickup.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
       <%= bootstrap_form_for @pickup, url:"/pickup_booking/check", method: "post" do |f| %>
           <div class="col-md-6 ">
             <div class="panel panel-success">

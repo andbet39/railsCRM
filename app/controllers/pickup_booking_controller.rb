@@ -12,7 +12,7 @@ class PickupBookingController < ApplicationController
 
     respond_to do |format|
       if @pickup.save
-        format.html { redirect_to @pickup, notice: 'Pickup was successfully created.' }
+        format.html { redirect_to pickup_booking_confirm_path(:id =>@pickup), notice: 'Pickup was successfully created.' }
       else
         @res = Wubookreservation.find_by(:reservation_code => @pickup.res_code)
         format.html { render :index }
@@ -21,9 +21,24 @@ class PickupBookingController < ApplicationController
   end
 
   def confirm
+    @pickup = Pickup.find(params[:id])
+
+    @pickup.price = 45
+    if @pickup.passengers > 4 and @pickup.price < 60
+      @pickup.price += 20
+    end
+    @pickup.save!
+
+
+
   end
 
   def view
+    @pickup = Pickup.find(params[:id])
+
+    @pickup.confirmed = true
+
+    @pickup.save!
   end
 
   private

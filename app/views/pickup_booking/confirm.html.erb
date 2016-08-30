@@ -1,2 +1,10 @@
-<h1>PickupBooking#confirm</h1>
-<p>Find me in app/views/pickup_booking/confirm.html.erb</p>
+
+
+<h3> Pickup from <%= @pickup.airport %> to Bamboo B&B </h3>
+<p><strong>Arrival Time</strong> : <%=@pickup.arrival_date.strftime("%d/%m/%Y") %> - <%= @pickup.arrival_time.strftime("%H:%M") %></p>
+<p><strong>Passenger</strong> : <%= @pickup.passengers %></p>
+<p><strong>Name</strong> : <%=@pickup.customer_name %> <%= @pickup.customer_surname %></p>
+<p><strong>Contacts</strong> : <%=@pickup.customer_phone %> - <%= @pickup.customer_email %></p>
+<h3> Price <%= @pickup.price %></h3>
+
+<%= link_to "Confirm", pickup_booking_view_path(:id => @pickup.id), class:"btn btn-success" %>
